@@ -1,85 +1,251 @@
 ---
-layout: post 
-title: Portfolio Home 
+layout: base
+title: Code Constellations
 hide: true
-show_reading_time: false
+background: home.png
 ---
 
-Hi! My name is [Your Full Name]
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-### Development Environment
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Bungee&family=Great+Vibes&display=swap');
 
+  /* HIDE THE THEME FOOTER */
+  footer, .footer, #footer, .site-footer, .page__footer {
+    display: none !important;
+  }
 
-> Coding starts with tools, explore these tools and procedures with a click.
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%), url('{{ site.baseurl }}/home.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
+    font-family: 'Orbitron', sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+  }
 
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <a href="https://opencodingsociety.com" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid #FA8072; border-radius: 6px; font-weight: 700; transition: all 0.3s;">
-        <img src="{{ '/favicon.ico' | relative_url }}" alt="OCS logo" style="width: 16px; height: 16px;">
-        OCS
-    </a>
-    <a href="https://github.com/Open-Coding-Society/portfolio" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid #FFF; border-radius: 6px; font-weight: 700; transition: all 0.3s;">
-        <svg style="width: 16px; height: 16px; fill: currentColor;" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-        </svg>
-        GitHub
-    </a>
-    <a href="https://vscode.dev/" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid #007ACC; border-radius: 6px; font-weight: 700; transition: all 0.3s;">
-        <svg style="width: 16px; height: 16px; fill: currentColor;" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11.34 0L5.66 5.39l-2.4-1.8L1.19 4.82v6.36l2.07 1.23 2.4-1.8L11.34 16 15 14.23V1.77L11.34 0zm.59 11.57l-3.86-3.54 3.86-3.54v7.08z"/>
-        </svg>
-        VSCode.dev
-    </a>
+  /* FULL SCREEN CLICK OVERLAY TO UNLOCK AUDIO */
+  #audio-unlock {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  #audio-unlock h2 {
+    font-family: 'Bungee', cursive;
+    color: #00f2ff;
+    text-shadow: 0 0 20px #00f2ff;
+    letter-spacing: 5px;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  /* SCANLINE EFFECT */
+  body::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+  }
+
+  .shake-screen {
+    animation: screenShake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+  }
+
+  @keyframes screenShake {
+    10%, 90% { transform: translate3d(-2px, 0, 0); }
+    20%, 80% { transform: translate3d(4px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-8px, 0, 0); }
+    40%, 60% { transform: translate3d(8px, 0, 0); }
+  }
+
+  .typing-container {
+    position: absolute;
+    top: 10%;
+    width: 95%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+  }
+
+  #typed { 
+    font-family: 'Bungee', cursive;
+    font-size: 6rem;
+    line-height: 1.1;
+    display: inline-block;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255,0,0,0.8), 4px 4px 0px #ff0000, -2px -2px 0px #0000ff;
+    letter-spacing: -2px;
+  }
+
+  .middle-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Great Vibes', cursive;
+    font-size: 9rem;
+    color: #ffffff;
+    opacity: 0;
+  }
+
+  .fade-in-middle {
+    animation: fadeInMiddle 1s ease-in forwards, float 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes float {
+    from { transform: translate(-50%, -50%); }
+    to { transform: translate(-50%, -55%); }
+  }
+
+  @keyframes fadeInMiddle {
+    from { opacity: 0; transform: translate(-50%, -40%); }
+    to   { opacity: 1; transform: translate(-50%, -50%); }
+  }
+
+  .button-container {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    visibility: hidden; /* Hide until typing is done */
+  }
+
+  .button.large {
+    display: inline-block;
+    padding: 15px 80px;
+    min-width: 300px;
+    font-size: 1.8rem;
+    text-decoration: none;
+    font-family: 'Bungee', sans-serif;
+    color: #fff !important;
+    border: 3px solid #fff;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    transform: skew(-15deg);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-start { background: #ff0000; box-shadow: 0 0 20px rgba(255, 0, 0, 0.3); }
+  .btn-blog { background: #111; border-color: #555; }
+  .btn-s5 { background: linear-gradient(45deg, #005f73, #00d4ff); border-color: #00d4ff; }
+
+  #cursor {
+    display: inline-block;
+    width: 10px;
+    height: 4rem;
+    background-color: #00f2ff;
+    animation: blink 0.7s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+</style>
+
+<audio id="thunder-audio" src="{{ site.baseurl }}/assets/audio/Thunder.mp3" preload="auto"></audio>
+
+<div id="audio-unlock">
+  <h2>CLICK TO ENTER</h2>
 </div>
 
-<br>
-
-### My Lessons
-
-> Foundations in Tech are essential, click to see some of my lesson creations.
-
-
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <a href="{{site.baseurl}}/code/javascript" style="text-decoration: none;">
-        <div style="background-color: var(--green); color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
-           JS Basics
-        </div>
-    </a>
-    <a href="{{site.baseurl}}/game/essentials/variables" style="text-decoration: none;">
-        <div style="background-color: var(--blue); color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
-           JS Variables
-        </div>
-    </a>
-    <a href="{{site.baseurl}}/gamerunner" style="text-decoration: none;">
-        <div style="background-color: var(--warn); color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
-           Gamerunner
-        </div>
-    </a>
-    <a href="{{site.baseurl}}/network/stack" style="text-decoration: none;">
-        <div style="background-color: var(--orange); color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
-           Networking
-        </div>
-    </a>
+<div class="typing-container">
+  <span id="typed"></span><span id="cursor"></span>
 </div>
 
-<br>
+<div class="middle-text" id="welcome-text">Welcome</div>
 
-### Class Progress
-
-> Here is my game progress through coding, click to see these in the browser
-
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <a href="{{site.baseurl}}/snake" class="btn">
-        Snake
-    </a>
-    <a href="{{site.baseurl}}/gamify/parallax" class="btn" style="background-color: var(--green); ">
-        Fish
-    </a>
-    <a href="{{site.baseurl}}/gamify" class="btn" style="background-color: var(--teal);">
-       Gamify
-    </a>
-    <a href="{{site.baseurl}}/cs-pathway" class="btn" style="background-color: var(--orange);">
-       CS Pathway
-    </a>
+<div class="button-container" id="btns">
+  <a href="{{site.baseurl}}/sprintfive" class="button large btn-s5">SPRINT 5</a>
+  <a href="{{site.baseurl}}/sprintfour" class="button large btn-blog">SPRINT 4</a>
+  <a href="{{site.baseurl}}/home" class="button large btn-start">START</a>
 </div>
 
-<br>
+<script>
+  const text = "THE HOME OF THE SPRINTING SNAILS";
+  const speed = 40; 
+  let i = 0;
+  const thunderSound = document.getElementById("thunder-audio");
+  const unlockOverlay = document.getElementById("audio-unlock");
+
+  // This starts when the user clicks the overlay
+  unlockOverlay.addEventListener('click', () => {
+    unlockOverlay.style.display = 'none'; // Remove overlay
+    thunderSound.play(); // Play sound
+    typeWriter(); // Start typing
+  });
+
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById("typed").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    } else {
+      // Typing finished
+      setTimeout(() => {
+        triggerShake();
+        document.getElementById("welcome-text").classList.add('fade-in-middle');
+        document.getElementById("btns").style.visibility = 'visible';
+        setTimeout(fireConfetti, 200);
+      }, 500);
+    }
+  }
+
+  function triggerShake() {
+    document.body.classList.add('shake-screen');
+    setTimeout(() => {
+      document.body.classList.remove('shake-screen');
+    }, 500);
+  }
+
+  function fireConfetti() {
+    const duration = 3 * 1000;
+    const end = Date.now() + duration;
+
+    (function frame() {
+      confetti({
+        particleCount: 5,
+        angle: 60,
+        spread: 80,
+        origin: { x: 0, y: 0.7 },
+        colors: ['#ff0000', '#00f2ff', '#ffffff']
+      });
+      confetti({
+        particleCount: 5,
+        angle: 120,
+        spread: 80,
+        origin: { x: 1, y: 0.7 },
+        colors: ['#ff0000', '#00f2ff', '#ffffff']
+      });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    }());
+  }
+</script>
