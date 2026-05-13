@@ -17,8 +17,6 @@ constructor(options = {}) {
    this.dialogueBox = null;
   this.dialogueText = null;
   this.closeBtn = null;
-  this.controlsRow = null;
-  this.actionButtonGroup = null;
    // Game control reference for pausing
   this.gameControl = options.gameControl || null;
   // Track if this dialogue system paused the game
@@ -36,102 +34,52 @@ constructor(options = {}) {
   this.voiceRate = options.voiceRate !== undefined ? options.voiceRate : 0.9;
   this.voicePitch = options.voicePitch !== undefined ? options.voicePitch : 1.0;
   this.voiceVolume = options.voiceVolume !== undefined ? options.voiceVolume : 1.0;
-  this.lifecycleSession = null;
    // Create the dialogue box
   this.createDialogueBox();
    // Keep track of whether the dialogue is currently open
   this.isOpen = false;
 }
 
- // Shared speech state so dialogue lines from different DialogueSystem instances
- // are spoken in sequence instead of interrupting each other.
- static getSpeechState() {
-   if (!DialogueSystem._speechState) {
-     DialogueSystem._speechState = {
-       queue: [],
-       speaking: false,
-     };
-   }
-   return DialogueSystem._speechState;
- }
- 
- static flushSpeechQueue() {
-   const state = DialogueSystem.getSpeechState();
-   state.queue = [];
-   state.speaking = false;
- 
-   if (window.speechSynthesis) {
-     window.speechSynthesis.cancel();
-   }
- }
- 
- static drainSpeechQueue() {
-   const state = DialogueSystem.getSpeechState();
-   if (state.speaking) return;
-   if (!window.speechSynthesis) return;
- 
-   const nextUtterance = state.queue.shift();
-   if (!nextUtterance) return;
- 
-   state.speaking = true;
- 
-   nextUtterance.onend = () => {
-     state.speaking = false;
-     DialogueSystem.drainSpeechQueue();
-   };
- 
-   nextUtterance.onerror = () => {
-     state.speaking = false;
-     DialogueSystem.drainSpeechQueue();
-   };
- 
-   window.speechSynthesis.speak(nextUtterance);
- }
+
 
 
 // Voice synthesis helper
 speakText(text) {
-  if (!this.enableVoice || !window.speechSynthesis) {
+  // Cancel any ongoing speech
+  if (window.speechSynthesis) {
+    window.speechSynthesis.cancel();
+  }
+   if (!this.enableVoice || !window.speechSynthesis) {
     return; // Voice synthesis not available or disabled
   }
-
-  const utterance = new SpeechSynthesisUtterance(text);
-
-  // Set voice properties
+   const utterance = new SpeechSynthesisUtterance(text);
+   // Set voice properties
   utterance.rate = this.voiceRate;
   utterance.pitch = this.voicePitch;
   utterance.volume = this.voiceVolume;
-
-  // Try to set Australian male voice
+   // Try to set Australian male voice
   const voices = window.speechSynthesis.getVoices();
-
-  // First, look for Australian English voices
-  let australianVoice = voices.find((voice) =>
+   // First, look for Australian English voices
+  let australianVoice = voices.find(voice =>
     voice.lang.includes('en-AU') && voice.name.toLowerCase().includes('male')
   );
-
-  // If no Australian male voice found, look for any Australian voice
+   // If no Australian male voice found, look for any Australian voice
   if (!australianVoice) {
-    australianVoice = voices.find((voice) => voice.lang.includes('en-AU'));
+    australianVoice = voices.find(voice => voice.lang.includes('en-AU'));
   }
-
-  // If still no Australian voice, look for any male voice
+   // If still no Australian voice, look for any male voice
   if (!australianVoice) {
-    australianVoice = voices.find((voice) => voice.name.toLowerCase().includes('male'));
+    australianVoice = voices.find(voice => voice.name.toLowerCase().includes('male'));
   }
-
-  // If no male voice found, just pick the first voice
+   // If no male voice found, just pick the first voice
   if (!australianVoice && voices.length > 0) {
     australianVoice = voices[0];
   }
-
-  if (australianVoice) {
+   if (australianVoice) {
     utterance.voice = australianVoice;
   }
-
-  const state = DialogueSystem.getSpeechState();
-  state.queue.push(utterance);
-  DialogueSystem.drainSpeechQueue();
+   // Speak the text
+  window.speechSynthesis.speak(utterance);
 }
 
 
@@ -231,39 +179,18 @@ createDialogueBox() {
   this.closeBtn.id = "dialogue-close-btn-" + this.safeId;
   this.closeBtn.innerText = "Close";
   Object.assign(this.closeBtn.style, {
-    marginTop: "0",
+    marginTop: "15px",
     padding: "10px 20px",
     border: "none",
     borderRadius: "5px",
     cursor: "pointer",
     fontFamily: "'Press Start 2P', cursive, monospace",
-    fontSize: "12px",
-    flexShrink: "0"
+    fontSize: "12px"
   });
    // Add click handler
   this.closeBtn.onclick = () => {
     this.closeDialogue();
   };
-
-  this.controlsRow = document.createElement("div");
-  this.controlsRow.id = "dialogue-controls-" + this.safeId;
-  Object.assign(this.controlsRow.style, {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "10px",
-    marginTop: "10px",
-    flexWrap: "wrap"
-  });
-
-  this.actionButtonGroup = document.createElement("div");
-  Object.assign(this.actionButtonGroup.style, {
-    display: "flex",
-    justifyContent: "flex-end",
-    gap: "10px",
-    flexWrap: "wrap",
-    marginLeft: "auto"
-  });
 
 
 
@@ -285,10 +212,8 @@ createDialogueBox() {
 
 
   // Assemble the dialogue box
-  this.controlsRow.appendChild(this.closeBtn);
-  this.controlsRow.appendChild(this.actionButtonGroup);
   this.dialogueBox.appendChild(contentContainer);
-  this.dialogueBox.appendChild(this.controlsRow);
+  this.dialogueBox.appendChild(this.closeBtn);
    // Add to the document
   document.body.appendChild(this.dialogueBox);
    // Also listen for Escape key to close dialogue
@@ -297,10 +222,6 @@ createDialogueBox() {
       this.closeDialogue();
     }
   });
-}
-
-setLifecycleSession(session) {
-  this.lifecycleSession = session || null;
 }
 
 
@@ -450,20 +371,14 @@ showRandomDialogue(speaker = "", avatarSrc = null, spriteData = null) {
 // Close the dialogue box
 closeDialogue() {
   if (!this.isOpen) return;
-
-  if (this.lifecycleSession) {
-    this.lifecycleSession.cancel();
-    this.lifecycleSession = null;
-  }
-
    // Clear typewriter timeout
   if (this.typewriterTimeoutId) {
     clearTimeout(this.typewriterTimeoutId);
-    this.typewriterTimeoutId = null;
   }
-
-  DialogueSystem.flushSpeechQueue();
-
+   // Cancel speech synthesis
+  if (window.speechSynthesis) {
+    window.speechSynthesis.cancel();
+  }
    // Hide the dialogue box
   this.dialogueBox.style.display = "none";
   this.isOpen = false;
@@ -472,106 +387,65 @@ closeDialogue() {
     this.gameControl.resume();
     this.didPauseGame = false; // Reset the flag
   }
-
-  if (this.actionButtonGroup) {
-    this.actionButtonGroup.innerHTML = '';
-  }
-
-  if (this.closeBtn) {
-    this.closeBtn.innerText = 'Close';
-    this.closeBtn.onclick = () => {
-      this.closeDialogue();
-    };
-    this.closeBtn.style.marginRight = '0';
-    this.closeBtn.style.marginLeft = '0';
-    this.closeBtn.style.float = 'none';
-  }
+   // Remove any custom buttons
+  const buttonContainers = this.dialogueBox.querySelectorAll('div[style*="display: flex"]');
+  buttonContainers.forEach(container => {
+    // Skip the main content container
+    if (container.contains(document.getElementById("dialogue-avatar-" + this.safeId))) {
+      return;
+    }
+    container.remove();
+  });
 }
 
 
 
 
-/**
- * Remove all DOM nodes injected by this DialogueSystem instance.
- * Call this when the owning NPC or level is destroyed so elements
- * do not persist in document.body across level transitions.
- */
-destroy() {
-    // Close first so any pending typewriter/speech is cancelled cleanly.
-    if (this.isOpen) {
-      try { this.closeDialogue(); } catch (_) { /* ignore */ }
-    }
+// Check if dialogue is currently open
+isDialogueOpen() {
+  return this.isOpen;
+}
 
-    // Remove the dialogue box from document.body forcibly.
-    try {
-      if (this.dialogueBox) {
-        // Try parentNode removal first
-        if (this.dialogueBox.parentNode) {
-          this.dialogueBox.parentNode.removeChild(this.dialogueBox);
-        }
-        // If element is still in document, remove it directly
-        if (document.body.contains(this.dialogueBox)) {
-          document.body.removeChild(this.dialogueBox);
-        }
-      }
-    } catch (e) {
-      console.warn('DialogueSystem: error removing dialogueBox', e);
-    }
 
-    this.dialogueBox = null;
-    this.dialogueText = null;
-    this.closeBtn = null;
-    this.controlsRow = null;
-    this.actionButtonGroup = null;
 
-    // Remove the injected <style> animation block.
-    try {
-      const styleEl = document.getElementById('dialogue-animations-' + this.safeId);
-      if (styleEl) {
-        if (styleEl.parentNode) {
-          styleEl.parentNode.removeChild(styleEl);
-        } else if (document.head.contains(styleEl)) {
-          document.head.removeChild(styleEl);
-        }
-      }
-    } catch (e) {
-      console.warn('DialogueSystem: error removing style element', e);
-    }
-  }
 
-  // Check if dialogue is currently open
-  isDialogueOpen() {
-    return this.isOpen;
-  }
-
-  // Add buttons to the dialogue
-  addButtons(buttons) {
-    if (!this.isOpen || !buttons || !Array.isArray(buttons) || buttons.length === 0 || !this.actionButtonGroup) return;
-
-    this.actionButtonGroup.innerHTML = '';
+// Add buttons to the dialogue
+addButtons(buttons) {
+    if (!this.isOpen || !buttons || !Array.isArray(buttons) || buttons.length === 0) return;
+  
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.justifyContent = 'space-between';
+    buttonContainer.style.marginTop = '10px';
   
     // Add each button
     buttons.forEach(button => {
-      if (!button || !button.text) return;
+        if (!button || !button.text) return;
       
-      const btn = document.createElement('button');
-      btn.textContent = button.text;
-      btn.className = button.primary ? 'primary-button' : 'secondary-button';
-      btn.style.padding = '8px 15px';
-      btn.style.border = 'none';
-      btn.style.borderRadius = '5px';
-      btn.style.cursor = 'pointer';
+        const btn = document.createElement('button');
+        btn.textContent = button.text;
+        btn.className = button.primary ? 'primary-button' : 'secondary-button';
+        btn.style.padding = '8px 15px';
+        btn.style.border = 'none';
+        btn.style.borderRadius = '5px';
+        btn.style.cursor = 'pointer';
+        btn.style.marginRight = '10px';
       
-      // Add click handler
-      btn.onclick = () => {
-        if (button.action && typeof button.action === 'function') {
-          button.action();
-        }
-      };
+        // Add click handler
+        btn.onclick = () => {
+            if (button.action && typeof button.action === 'function') {
+                button.action();
+            }
+        };
       
-      this.actionButtonGroup.appendChild(btn);
+        buttonContainer.appendChild(btn);
     });
-  }
+  
+    // Insert before the close button
+    if (buttonContainer.children.length > 0) {
+        this.dialogueBox.insertBefore(buttonContainer, this.closeBtn);
+    }
+}
 }
 
 

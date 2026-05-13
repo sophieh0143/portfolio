@@ -51,38 +51,30 @@ class GameLevelTimmyfuncounter {
             down: { row: 0, start: 0, columns: 1 },
             hitbox: { widthPercentage: 0.4, heightPercentage: 0.6 },
             dialogues: ['"Good luck! You will need it..."'],
-            // Standard function used so 'this' refers to Garrett the NPC
             interact: function() {
                 if (!musicStarted) {
                     music.play().catch(() => {});
                     musicStarted = true;
                 }
 
-                // FIRST INTERACTION: Move Garrett to the right side
                 if (!this.teleported) {
                     this.teleported = true;
                     this.canvas.style.transition = "opacity 0.5s";
                     this.canvas.style.opacity = "0"; 
                     
                     setTimeout(() => {
-                        // Teleport to right side (screen width minus a margin)
                         this.position.x = window.innerWidth - 180;
                         this.position.y = window.innerHeight / 2;
-                        
-                        // Force CSS update so the player can actually see/touch him there
                         this.canvas.style.left = `${this.position.x}px`;
                         this.canvas.style.top = `${this.position.y}px`;
                         this.canvas.style.opacity = "1";
                         this.greeting = '"You found me! But can you finish the job?"';
                     }, 500);
                 } 
-                // SECOND INTERACTION: Check for Win
                 else {
                     if (window.currentSteps <= window.stepGoal) {
                         window.hoorayLevelRef.saveToLeaderboard(window.currentSteps);
                         alert(`🎉 YOU WIN! Garrett captured in ${window.currentSteps} steps!`);
-                        // Optional: Redirect or reset
-                        // window.location.reload(); 
                     } else {
                         alert(`FAILED! You took ${window.currentSteps} steps. The limit was ${window.stepGoal}.`);
                     }
@@ -107,7 +99,8 @@ class GameLevelTimmyfuncounter {
 
         // --- UI Setup ---
         window.addEventListener("load", () => {
-            const STEP_GOAL = 300;
+            // UPDATED: Set step goal to 30
+            const STEP_GOAL = 30; 
             window.currentSteps = 0;
             window.stepGoal = STEP_GOAL;
 
@@ -128,10 +121,15 @@ class GameLevelTimmyfuncounter {
                     window.currentSteps++;
                     stepCounterEl.textContent = `Steps: ${window.currentSteps} / ${STEP_GOAL}`;
                     
-                    // Visual warning as you get closer to the limit
                     if (window.currentSteps > STEP_GOAL * 0.8) {
                         stepCounterEl.style.color = "red";
                         stepCounterEl.style.borderColor = "red";
+                    }
+                    
+                    // Fail state if they exceed 30 steps
+                    if (window.currentSteps > STEP_GOAL) {
+                        alert("TOO MANY STEPS! Game Over.");
+                        window.location.reload();
                     }
                 }
             });
@@ -171,7 +169,7 @@ class GameLevelTimmyfuncounter {
     saveToLeaderboard(steps) {
         let scores = JSON.parse(localStorage.getItem("mazeScores")) || [];
         scores.push({ steps: steps, date: new Date().toLocaleTimeString() });
-        scores.sort((a, b) => a.steps - b.steps); // Lowest steps = Top of board
+        scores.sort((a, b) => a.steps - b.steps); 
         scores = scores.slice(0, 5); 
         localStorage.setItem("mazeScores", JSON.stringify(scores));
     }

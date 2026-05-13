@@ -1,7 +1,7 @@
 ---
 layout: post 
-title: Welcome To My Portfolio Homepage
-permalink: /portfolio-main
+title: Sprint 4 Assessments 
+permalink: /portfolio-s4-main
 hide: true
 show_reading_time: false
 ---
@@ -99,32 +99,55 @@ show_reading_time: false
     /* Color Variants */
     .btn-red { background: linear-gradient(45deg, #c51d1d, #ff3131); box-shadow: 0 4px 15px rgba(197, 29, 29, 0.4); }
     .btn-orange { background: linear-gradient(45deg, #a54c1f, #e67e22); box-shadow: 0 4px 15px rgba(165, 76, 31, 0.4); }
-    .btn-gold { background: linear-gradient(45deg, #a58f1f, #f1c40f); box-shadow: 0 4px 15px rgba(165, 143, 31, 0.4); }
+    .btn-yellow { background: linear-gradient(45deg, #a58f1f, #f1c40f); box-shadow: 0 4px 15px rgba(165, 143, 31, 0.4); }
+    .btn-green { background: linear-gradient(45deg, #32902b, #53be73); box-shadow: 0 4px 15px rgba(165, 143, 31, 0.4); }
+    .btn-blue { background: linear-gradient(45deg, #29206e, #3e40b8); box-shadow: 0 4px 15px rgba(165, 143, 31, 0.4); }
     .btn-dark { background: linear-gradient(45deg, #4a0b0b, #220505); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); border: 1px solid #ff0000 !important;}
 
 </style>
 
-<div class="dashboard-intro">
-    <span class="system-label">Homepage</span>
-    Welcome! My name is Sophie Haas, and my github ID is sophieh0143. This is my organized portfolio where you will be able to easily find all documentation of projects and work created through this class! </strong>. 
-    <br><br>
-    <strong>MAP DATA ACQUIRED:</strong><br>
-    <span class="level-tag">Level 1</span> GameLevelGarrett.js (Timmy's Fun World)<br>
-    <span class="level-tag">Level 2</span> GameLevelTimmyfuncounter.js (The Invisible Maze)<br>
-    <span class="level-tag">Level 2.5</span> GameLevelHooray.js (Hooray...right?)<br>
-    <span class="level-tag">Level 3</span> GameLevelBattleBus.js (Welcome to the Battle Bus)
-</div>
-
-<h2>Sprint 4</h2>
+<h2>Timmy's FunWorld - Game Levels</h2>
 <div class="grid-container">
-    <a href="{{site.baseurl}}/portfolio-s4-main" class="race-button">
-        <div class="btn-red">Homepage</div>
+    <a href="https://sprintingsnails.opencodingsociety.com/gamify/timmyworld" class="race-button">
+        <div class="btn-red">Level 1</div>
+    </a>
+    <a href="https://sprintingsnails.opencodingsociety.com/gamify/timmycounter.html" class="race-button">
+        <div class="btn-orange">Level 2</div>
+    </a>
+     <a href="https://sprintingsnails.opencodingsociety.com/gamify/timmycounter.html" class="race-button">
+        <div class="btn-yellow">Level 3</div>
     </a>
 </div>
 
-<h2>Sprint 5</h2>
+<h2>Issue & Development Blogs</h2>
 <div class="grid-container">
-    <a href="{{site.baseurl}}/gamify/timmyworld" class="race-button">
-        <div class="btn-red">Timmy's Adventure (A1)</div>
+    <a href="{{site.baseurl}}/Aoneblog" class="race-button">
+        <div class="btn-red">Adventure Blog</div>
+    </a>
+    <a href="{{site.baseurl}}/Atwoblog" class="race-button">
+        <div class="btn-orange">Maze Blog</div>
+    </a>
+    <a href="{{site.baseurl}}/Athreeblog" class="race-button">
+        <div class="btn-gold">Checklist</div>
+    </a>
+</div>
+
+<h2>Game Runners</h2>
+<div class="grid-container">
+    <a href="{{site.baseurl}}/Aonerunner" class="race-button">
+        <div class="btn-red">A1 Runner</div>
+    </a>
+    <a href="{{site.baseurl}}/Atworunner" class="race-button">
+        <div class="btn-orange">A2 Runner</div>
+    </a>
+    <a href="{{site.baseurl}}/Athreerunner" class="race-button">
+        <div class="btn-gold">A3 Crash Landing</div>
+    </a>
+</div>
+
+<h2>Developer Tools</h2>
+<div class="grid-container">
+    <a href="{{site.baseurl}}/runners" class="race-button">
+        <div class="btn-dark">Game Runner Examples</div>
     </a>
 </div>

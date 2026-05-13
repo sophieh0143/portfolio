@@ -461,7 +461,7 @@ bundle-install:
 jekyll-serve: bundle-install
 	@touch /tmp/.notebook_watch_marker
 	@rm -f /tmp/.jekyll_rebuild_trigger
-	bundle exec jekyll serve -H $(HOST) -P $(PORT) --no-watch > $(LOG_FILE) 2>&1 &
+	bundle exec jekyll serve -H $(HOST) -P $(PORT) > $(LOG_FILE) 2>&1 &
 	@make wait-for-server
 
 # Common server wait logic
