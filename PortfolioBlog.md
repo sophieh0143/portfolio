@@ -117,7 +117,7 @@ show_reading_time: false
 
 <h2>Sprint 5</h2>
 <div class="grid-container">
-    <a href="{{site.baseurl}}/gamify/timmyworld" class="race-button">
-        <div class="btn-red">Timmy's Adventure (A1)</div>
+    <a href="{{site.baseurl}}/portfolio-s5-main" class="race-button">
+        <div class="btn-red">Homepage (A1)</div>
     </a>
 </div>
