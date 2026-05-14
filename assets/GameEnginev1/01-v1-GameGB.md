@@ -1,7 +1,7 @@
 ---
 layout: opencs
-title: RPG Timmy 
-permalink: /gamify/battlebus
+title: RPG Water Example 
+permalink: /gamify/gamegb
 ---
 
 <div id="gameContainer">
@@ -13,10 +13,11 @@ permalink: /gamify/battlebus
     // Adnventure Game assets locations
     import Core from "{{site.baseurl}}/assets/js/GameEnginev1/essentials/Game.js";
     import GameControl from "{{site.baseurl}}/assets/js/GameEnginev1/essentials/GameControl.js";
-    import GameLevelBattleBus from "{{site.baseurl}}/assets/js/GameEnginev1/GameLevelBattleBus.js";
+    import GameLevelBSpace from "{{site.baseurl}}/assets/js/GameEnginev1/GameLevelGBSpace.js";
+    import GameLevelBSlimey from "{{site.baseurl}}/assets/js/GameEnginev1/GameLevelGBSlimey.js";
     import { pythonURI, javaURI, fetchOptions } from '{{site.baseurl}}/assets/js/api/config.js';
 
-    const gameLevelClasses = [GameLevelBattleBus];
+    const gameLevelClasses = [GameLevelBSpace, GameLevelBSlimey];
 
     // Web Server Environment data
     const environment = {

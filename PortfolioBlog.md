@@ -12,7 +12,7 @@ show_reading_time: false
     /* Global Page Overrides */
     .post {
         background-color: #0f0f0f;
-        color: #f0f0f0; 
+        color: #f0f0f0;
         font-family: 'Orbitron', sans-serif;
         padding: 40px 20px;
         min-height: 100vh;
@@ -107,13 +107,6 @@ show_reading_time: false
 <div class="dashboard-intro">
     <span class="system-label">Homepage</span>
     Welcome! My name is Sophie Haas, and my github ID is sophieh0143. This is my organized portfolio where you will be able to easily find all documentation of projects and work created through this class! </strong>. 
-    <br><br>
-    <strong>MAP DATA ACQUIRED:</strong><br>
-    <span class="level-tag">Level 1</span> GameLevelGarrett.js (Timmy's Fun World)<br>
-    <span class="level-tag">Level 2</span> GameLevelTimmyfuncounter.js (The Invisible Maze)<br>
-    <span class="level-tag">Level 2.5</span> GameLevelHooray.js (Hooray...right?)<br>
-    <span class="level-tag">Level 3</span> GameLevelBattleBus.js (Welcome to the Battle Bus)
-</div>
 
 <h2>Sprint 4</h2>
 <div class="grid-container">
