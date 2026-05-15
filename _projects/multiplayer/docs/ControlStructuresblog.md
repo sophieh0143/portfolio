@@ -1,0 +1,41 @@
+---
+layout: post 
+title: Control Structures Checklist
+permalink: /ControlStructures-checklist
+hide: true
+show_reading_time: false
+---
+# iteration
+lalalalalalalalalal
+lalalalalalalalalallalalalalalalalalallalalalalalalalalallalalalalalalalalal
+lalalalalalalalalal
+lalalalalalalalalal
+lalalalalalalalalal
+
+
+lalalalalalalalalal
+lalalalalalalalalal
+lalalalalalalalalal
+lalalalalalalalalal
+lalalalalalalalalal
+lalalalalalalalalal
+lalalalalalalalalal
+lalalalalalalalalal
+lalalalalalalalalal
+lalalalalalalalalal
+lalalalalalalalalal
+lalalalalalalalalal
+
+lalalalalalalalalal
+lalalalalalalalalal
+
+
+lalalalalalalalalal
+lalalalalalalalalal
+lalalalalalalalalal
+
+lalalalalalalalalal
+lalalalalalalalalal
+lalalalalalalalalal
+
+# conditionals

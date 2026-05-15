@@ -121,3 +121,10 @@ show_reading_time: false
         <div class="btn-red">Homepage (A1)</div>
     </a>
 </div>
+
+<h2>Checklist</h2>
+<div class="grid-container">
+    <a href="{{site.baseurl}}/portfolio-checklist" class="race-button">
+        <div class="btn-red">Checklist</div>
+    </a>
+</div>
