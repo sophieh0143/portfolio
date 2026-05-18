@@ -174,22 +174,22 @@ author: Sophie Haas
 > **The connections inside and outside the game.** Click a button to review hardware controls, canvas rendering configurations, and backend API integration.
 
 <div class="cloud-grid">
-    <a href="{{site.baseurl}}/InputOutput-checklist#keyboard-input" class="cloud-btn">
+    <a href="{{site.baseurl}}/IO-checklist#keyboard-input" class="cloud-btn">
         <span>Keyboard Input</span>
     </a>
-    <a href="{{site.baseurl}}/InputOutput-checklist#canvas-rendering" class="cloud-btn">
+    <a href="{{site.baseurl}}/IO-checklist#canvas-rendering" class="cloud-btn">
         <span>Canvas Rendering</span>
     </a>
-    <a href="{{site.baseurl}}/InputOutput-checklist#gameenv-config" class="cloud-btn">
+    <a href="{{site.baseurl}}/IO-checklist#gameenv-config" class="cloud-btn">
         <span>GameEnv Config</span>
     </a>
-    <a href="{{site.baseurl}}/InputOutput-checklist#api-integration" class="cloud-btn">
+    <a href="{{site.baseurl}}/IO-checklist#api-integration" class="cloud-btn">
         <span>API Integration</span>
     </a>
-    <a href="{{site.baseurl}}/InputOutput-checklist#async-io" class="cloud-btn">
+    <a href="{{site.baseurl}}/IO-checklist#async-io" class="cloud-btn">
         <span>Asynchronous I/O</span>
     </a>
-    <a href="{{site.baseurl}}/InputOutput-checklist#json-parsing" class="cloud-btn">
+    <a href="{{site.baseurl}}/IO-checklist#json-parsing" class="cloud-btn">
         <span>JSON Parsing</span>
     </a>
 </div>

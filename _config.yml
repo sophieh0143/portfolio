@@ -117,3 +117,7 @@ minima:
 
 exclude:
   - assets/GameEnginev1/CHECKLIST.md
+  - vendor/
+  - Gemfile
+  - Gemfile.lock
+  - .github/
