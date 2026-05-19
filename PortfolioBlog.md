@@ -108,23 +108,14 @@ show_reading_time: false
     <span class="system-label">Homepage</span>
     Welcome! My name is Sophie Haas, and my github ID is sophieh0143. This is my organized portfolio where you will be able to easily find all documentation of projects and work created through this class! </strong>. 
 
-<h2>Sprint 4</h2>
-<div class="grid-container">
-    <a href="{{site.baseurl}}/portfolio-s4-main" class="race-button">
-        <div class="btn-red">Homepage</div>
-    </a>
-</div>
+<a href="/portfolio/portfolio-s4-main" class="race-button">
+    <div class="btn-red">Homepage</div>
+</a>
 
-<h2>Sprint 5</h2>
-<div class="grid-container">
-    <a href="{{site.baseurl}}/portfolio-s5-main" class="race-button">
-        <div class="btn-red">Homepage (A1)</div>
-    </a>
-</div>
+<a href="/portfolio/portfolio-s5-main" class="race-button">
+    <div class="btn-red">Homepage (A1)</div>
+</a>
 
-<h2>Checklist</h2>
-<div class="grid-container">
-    <a href="{{site.baseurl}}/portfolio-checklist" class="race-button">
-        <div class="btn-red">Checklist</div>
-    </a>
-</div>
+<a href="/portfolio/portfolio-checklist" class="race-button">
+    <div class="btn-red">Checklist</div>
+</a>
