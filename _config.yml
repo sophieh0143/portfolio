@@ -19,14 +19,15 @@ description: "Class of 2029"
 owner_name: Sophie Haas
 github_username: sophieh0143
 github_repo: "portfolio" 
-baseurl: "/portfolio"
+baseurl: ""
 future: true
 
 # Build settings
 # --------------
+
 #
 # If you wish to use the gem-version of Minima with or without a Gemfile, use
-#   the following setting:
+#   the following setting: YAYAYAYAYY
 # theme: minima
 #
 # **OR** if you wish to use the theme directly from the GitHub repository by
