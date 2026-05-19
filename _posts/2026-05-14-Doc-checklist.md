@@ -7,20 +7,20 @@ show_reading_time: false
 ---
 
 <style>
-.oop-section {
+.oop-section, .cs-section {
     background: rgba(255,255,255,0.05);
     border: 2px solid rgba(255,255,255,0.1);
     border-radius: 12px;
     padding: 20px 28px;
     margin: 28px 0;
 }
-.oop-section h2 {
+.oop-section h2, .cs-section h2 {
     color: #3498db;
     border-bottom: 2px solid #3498db;
     padding-bottom: 8px;
     margin-top: 0;
 }
-.oop-section h3 {
+.oop-section h3, .cs-section h3 {
     color: #f0c040;
     margin-top: 20px;
 }
@@ -47,108 +47,52 @@ pre {
     padding: 14px;
     overflow-x: auto;
     font-size: 0.88em;
+    color: #e8e8e8 !important;
 }
 code {
     font-family: 'Courier New', monospace;
+    color: #e8e8e8 !important;
 }
 
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Bungee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Bungee&display=swap');
 
-    /* Global Page Overrides */
-    .post {
-        background-color: #0f0f0f;
-        color: #f0f0f0;
-        font-family: 'Orbitron', sans-serif;
-        padding: 40px 20px;
-        min-height: 100vh;
-    }
+.grid-container {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 15px;
+    margin-bottom: 30px;
+}
 
-    /* Styling for the intro text */
-    .dashboard-intro {
-        font-family: 'Orbitron', sans-serif;
-        font-weight: 500;
-        font-size: 1rem;
-        color: #bbb;
-        margin-bottom: 30px;
-        letter-spacing: 0.5px;
-        line-height: 1.8;
-        border-bottom: 1px solid #333;
-        padding-bottom: 25px;
-    }
+.race-button {
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
 
-    .system-label {
-        color: #00d4ff;
-        font-weight: 700;
-        text-transform: uppercase;
-        display: block;
-        margin-bottom: 10px;
-        font-size: 1.2rem;
-    }
+.race-button div {
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-family: 'Bungee', cursive;
+    border: 2px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    text-align: center;
+    color: white;
+}
 
-    /* Level Highlight Tags */
-    .level-tag {
-        color: #ff0000;
-        background: rgba(255, 0, 0, 0.1);
-        padding: 2px 8px;
-        border-radius: 4px;
-        font-family: 'Bungee', cursive;
-        font-size: 0.8rem;
-    }
+.race-button:hover {
+    transform: translateY(-5px) skew(-5deg);
+}
 
-    h2 {
-        font-family: 'Bungee', cursive;
-        color: #ff0000;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        border-left: 5px solid #ff0000;
-        padding-left: 15px;
-        margin-top: 40px;
-    }
-
-    /* Container for the button grid */
-    .grid-container {
-        display: flex; 
-        flex-wrap: wrap; 
-        gap: 15px;
-        margin-bottom: 30px;
-    }
-
-    /* The Racing Button Style */
-    .race-button {
-        display: inline-block;
-        text-decoration: none;
-        transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .race-button div {
-        padding: 15px 25px;
-        border-radius: 8px;
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: 0.9rem;
-        font-family: 'Bungee', cursive;
-        border: 2px solid rgba(255,255,255,0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 220px;
-        text-align: center;
-        color: white;
-    }
-
-    /* Hover Effects */
-    .race-button:hover {
-        transform: translateY(-5px) skew(-5deg);
-    }
-
-    /* Color Variants */
-    .btn-red { background: linear-gradient(45deg, #c51d1d, #ff3131); box-shadow: 0 4px 15px rgba(197, 29, 29, 0.4); }
-    .btn-orange { background: linear-gradient(45deg, #a54c1f, #e67e22); box-shadow: 0 4px 15px rgba(165, 76, 31, 0.4); }
-    .btn-gold { background: linear-gradient(45deg, #a58f1f, #f1c40f); box-shadow: 0 4px 15px rgba(165, 143, 31, 0.4); }
-    .btn-dark { background: linear-gradient(45deg, #4a0b0b, #220505); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); border: 1px solid #ff0000 !important;}
+.btn-red { background: linear-gradient(45deg, #c51d1d, #ff3131); box-shadow: 0 4px 15px rgba(197, 29, 29, 0.4); }
 </style>
 
-# 🏗️ Documentation Checklist
+# 📝 Documentation Checklist
 
 ---
 
@@ -156,7 +100,7 @@ code {
 
 ## Code Comments
 
-**What are code comments?** 
+**What are code comments?** Code comments are notes you write inside your code to explain what's happening. They don't actually run — the computer ignores them — but they're really important for anyone reading your code (including yourself two weeks later). JSDoc is a specific style of comment using `/** */` that describes what a class or method does, what parameters it takes, and what it returns. The requirement is that at least 10% of your code lines are comments, meaning roughly 1 comment for every 10 lines of code.
 
 **Requirement:** JSDoc comments for classes and methods
 
@@ -166,60 +110,144 @@ code {
 
 <div class="evidence-block" markdown="1">
 
-**GameLevelTimmyfuncounter** — This is my invisible maze level. The whole level is wrapped inside one class called `GameLevelTimmyfuncounter`. When the game engine starts this level, it calls the `constructor` — which is basically the setup function that runs once at the beginning. Inside there I define what the background looks like, where Kirby spawns, where the NPC Garret goes, and where all the invisible walls are placed. At the end I hand all of that to `this.classes` which is the list the game engine reads to actually build everything on screen.
+**TagCollisionDetector — JSDoc style comments** — This class has comments on basically every important line. The `/** */` block at the top describes the whole class, and then every parameter and step inside the methods is explained. This is what comment density over 10% actually looks like in practice.
 
 ```javascript
-class GameLevelTimmyfuncounter {
-    constructor(gameEnv) {
-        // gameEnv is the game engine passing itself in so we can use things like
-        // the screen width/height and the file path to find images
-        this.gameEnv = gameEnv;
-        const path = gameEnv.path; // the base URL path to find image files
+/**
+ * TagCollisionDetector — runs every frame to check if the local player
+ * is close enough to tag a remote player.
+ * Extends GameObject so the engine calls update() automatically each frame.
+ */
+class TagCollisionDetector extends GameObject {
 
-        // this.classes is the list the engine reads to build the level
-        // each item is: what class to use + what data to give it
-        this.classes = [
-            { class: GameEnvBackground, data: bgData }, // builds the background image
-            { class: Player, data: playerData },         // builds Kirby with all his settings
-            { class: Npc, data: npcData1 },              // builds Garret the NPC
-            ...wallClasses                               // builds all the invisible maze walls
-        ];
+    /**
+     * @param {Object} data - contains socket, remotePlayers, tagState, myIdRef
+     * @param {Object} gameEnv - the game engine environment
+     */
+    constructor(data = null, gameEnv = null) {
+        super(gameEnv); // call GameObject's constructor first — required before using "this"
+
+        this.socket = data.socket;               // WebSocket connection to the server
+        this.remotePlayersRef = data.remotePlayers; // reference to all connected players
+        this.tagStateRef = data.tagState;        // tracks who is currently "it"
+        this.myIdRef = data.myIdRef;             // my own socket ID
+        this.hitRadius = 30;                     // tag range in pixels
+        this.tagCooldownUntil = 0;               // timestamp: don't tag until this time passes
+    }
+
+    /**
+     * Calculates the center point of a bounding box.
+     * Sprites are positioned by their top-left corner, so we need this
+     * to get an accurate distance measurement between two players.
+     * @param {number} x - left edge of the box
+     * @param {number} y - top edge of the box
+     * @param {number} w - width of the box
+     * @param {number} h - height of the box
+     * @returns {{ cx: number, cy: number }} center coordinates
+     */
+    _getCenter(x, y, w, h) {
+        return { cx: x + w / 2, cy: y + h / 2 }; // halfway across = center
+    }
+
+    /**
+     * Called every frame by the game engine.
+     * Checks if this player is "it" and if so, measures distance to every
+     * remote player. If anyone is within hitRadius * 2 pixels, sends a tag.
+     */
+    update() {
+        const myId = this.myIdRef.value;
+        if (!myId || this.tagStateRef.taggerId !== myId) return; // not "it", do nothing
+
+        const now = Date.now();
+        if (now < this.tagCooldownUntil) return; // still on cooldown
+
+        // loop through every connected player and check distance
+        for (const sid in this.remotePlayersRef) {
+            const rp = this.remotePlayersRef[sid];
+            const local = this._getCenter(px, py, pw, ph);
+            const remote = this._getCenter(rp.x, rp.y, sw, sh);
+
+            const dx = local.cx - remote.cx; // horizontal gap
+            const dy = local.cy - remote.cy; // vertical gap
+            const dist = Math.sqrt(dx * dx + dy * dy); // Pythagorean distance formula
+
+            if (dist < this.hitRadius * 2) {
+                this.socket.emit("tag", { taggedId: sid }); // tell the server: tag this player
+                break; // only tag one person per frame
+            }
+        }
     }
 }
-export default GameLevelTimmyfuncounter; // makes this class available to other files
 ```
 
 </div>
 
 <div class="evidence-block" markdown="1">
 
-**GameLevelBattle** — This is my boss fight level. Same structure as above — one class wrapping the whole level. The difference is instead of an NPC, I pass in an `Enemy` class. I also built a whole damage system inside here — health bars for both Kirby and the enemy, a projectile that Kirby can shoot with the spacebar, and logic that checks if anything is hitting anything else.
+**RemotePlayerVisualizer — inline comments throughout** — Every step of the draw loop is explained with a comment. Someone who has never seen this code before could read through it and understand exactly what's happening at each line.
 
 ```javascript
-class GameLevelBattle {
-    constructor(gameEnv) {
-        // playerData and enemyData are objects I defined above with all the
-        // sprite settings, starting positions, hitbox sizes, etc.
-        this.classes = [
-            { class: GameEnvBackground, data: bgData }, // the hell background image
-            { class: Player, data: playerData },         // Kirby, controlled by WASD
-            { class: Enemy, data: enemyData }            // the enemy, chases Kirby
-        ];
-        // after this I override the enemy's update() to add my own damage logic
+/**
+ * RemotePlayerVisualizer — draws every other connected player on screen.
+ * Runs draw() each frame to show their current position and tag status.
+ */
+class RemotePlayerVisualizer extends GameObject {
+
+    constructor(data = null, gameEnv = null) {
+        super(gameEnv); // sets up gameEnv, ctx, etc. from the base class
+
+        this.remotePlayersRef = data?.remotePlayers || {}; // all players except me
+        this.tagStateRef = data.tagState; // who is "it" right now
+        this.myIdRef = data.myIdRef;      // my socket ID so I can skip drawing myself
+        this.SCALE_FACTOR = 3.5;          // multiplier — makes sprites bigger on screen
+        this.frameWidth = 569 / 13;       // sprite sheet is 569px wide with 13 frames
+        this.frameHeight = 36;            // each frame is 36px tall
+    }
+
+    /**
+     * Draws all remote players onto the canvas.
+     * Called automatically every frame by the game engine.
+     */
+    draw() {
+        if (!this.spriteImage || !this.remotePlayersRef) return; // nothing to draw yet
+
+        for (const sid in this.remotePlayersRef) {
+            const p = this.remotePlayersRef[sid]; // one player's position data
+            const isIt = this.tagStateRef.taggerId === sid; // are they the tagger?
+
+            const drawWidth = this.frameWidth * this.SCALE_FACTOR;   // scaled sprite width
+            const drawHeight = this.frameHeight * this.SCALE_FACTOR; // scaled sprite height
+
+            // draw the Kirby sprite at this player's position
+            this.gameEnv.ctx.drawImage(
+                this.spriteImage,
+                0, 0,                          // crop from top-left of sprite sheet
+                this.frameWidth, this.frameHeight, // crop size
+                p.x, p.y,                      // where on screen to draw them
+                drawWidth, drawHeight          // how big to draw them
+            );
+
+            // if they're "it", draw a red overlay so everyone can see
+            if (isIt) {
+                this.gameEnv.ctx.fillStyle = 'rgba(255, 0, 0, 0.4)';
+                this.gameEnv.ctx.fillRect(p.x, p.y, drawWidth, drawHeight);
+            }
+        }
     }
 }
-export default GameLevelBattle;
 ```
+
+</div>
 
 </div>
 
 ---
 
-<div class="documentation-section" markdown="1" id="mini-lesson">
+<div class="oop-section" markdown="1" id="mini-lesson">
 
 ## Mini-Lesson Documentation
 
-**What are mini-lessons (or blogs)?**
+**What are mini-lessons?** Mini-lessons are blog posts or documents where you teach someone else how to do something you built. The idea is if you can explain it clearly enough for someone else to follow along, you actually understand it. Ours include embedded game demos, code walkthroughs, and step-by-step guides for building things like multiplayer connections and level transitions.
 
 **Requirement:** Create comic/visual post with embedded runtime game demo
 
@@ -229,14 +257,14 @@ export default GameLevelBattle;
 
 <div class="evidence-block" markdown="1">
 
-**Mini-Lessons!** — While working on both sprint 4 and 5, out team make countless blogs, lessons, and ideation documents in order to show our processes. All of these are mini-lessons, documents that can be shown to others to help them achive similar things we have. Here are a few examples of ideation documents, lessons, and blogs I have made (with my partner: Salma Zaghloul).
+**Mini-Lessons and Blogs** — Throughout sprints 4 and 5 my partner Salma Zaghloul and I made a bunch of blogs, lessons, and ideation documents to show our process and teach others what we built.
 
-<h2>Ideation Documents/Repo Access</h2>
+<h2 style="font-family: sans-serif; color: #3498db; border-left: 4px solid #3498db; padding-left: 12px; text-transform: none; letter-spacing: 0;">Ideation Documents / Repo Access</h2>
 <div class="grid-container">
     <a href="https://github.com/Salma-Zag/Tri2team" class="race-button">
         <div class="btn-red">Frontend Repo (for multiplayer game)</div>
     </a>
-     <a href="https://github.com/TDWolff/flask" class="race-button">
+    <a href="https://github.com/TDWolff/flask" class="race-button">
         <div class="btn-red">Backend Repo (for multiplayer game)</div>
     </a>
     <a href="https://pages.opencodingsociety.com/2025/01/15/CSSE_game_over_IPYNB_2_.html" class="race-button">
@@ -245,10 +273,9 @@ export default GameLevelBattle;
     <a href="https://docs.google.com/document/d/1ZCdYbzZ6DTbXBwnawsfMCg9TeT4FzVzlmvFETTRZnL8/edit?tab=t.0" class="race-button">
         <div class="btn-red">Multiplayer Ideation Doc</div>
     </a>
-
 </div>
 
-<h2>Mini-Lessons/Teaching Blogs</h2>
+<h2 style="font-family: sans-serif; color: #3498db; border-left: 4px solid #3498db; padding-left: 12px; text-transform: none; letter-spacing: 0;">Mini-Lessons / Teaching Blogs</h2>
 <div class="grid-container">
     <a href="https://sprintingsnails.opencodingsociety.com/tlesson" class="race-button">
         <div class="btn-red">Transition Lesson</div>
@@ -258,7 +285,7 @@ export default GameLevelBattle;
     </a>
 </div>
 
-<h2>Blogs</h2>
+<h2 style="font-family: sans-serif; color: #3498db; border-left: 4px solid #3498db; padding-left: 12px; text-transform: none; letter-spacing: 0;">Blogs</h2>
 <div class="grid-container">
     <a href="https://sprintingsnails.opencodingsociety.com/Aoneblog" class="race-button">
         <div class="btn-red">Timmy's Maze Blog</div>
@@ -271,8 +298,8 @@ export default GameLevelBattle;
     </a>
 </div>
 
-<h2>Extra: Our team's website!</h2>
-This is where ALL of these can be found in one place.
+<h2 style="font-family: sans-serif; color: #3498db; border-left: 4px solid #3498db; padding-left: 12px; text-transform: none; letter-spacing: 0;">Our Team's Website</h2>
+This is where all of these live in one place.
 <div class="grid-container">
     <a href="https://sprintingsnails.opencodingsociety.com/" class="race-button">
         <div class="btn-red">Homepage</div>
@@ -281,13 +308,15 @@ This is where ALL of these can be found in one place.
 
 </div>
 
+</div>
+
 ---
 
-<div class="Documentation-section" markdown="1" id="code-highlights">
+<div class="oop-section" markdown="1" id="code-highlights">
 
 ## Code Highlights
 
-**What are coding highlights?** 
+**What are code highlights?** Code highlights are when you pick the most important or interesting parts of your project and explain them clearly — not just "here's the code" but actually walking through what each piece does and why it matters. The rubric wants to see OOP hierarchy, API calls, and collision logic specifically called out and explained.
 
 **Requirement:** Annotate key code snippets in documentation (OOP, APIs, collision)
 
@@ -297,32 +326,88 @@ This is where ALL of these can be found in one place.
 
 <div class="evidence-block" markdown="1">
 
-Every level I made uses the same pattern. I write each game object as a JavaScript **object literal** — which is just a set of curly braces `{}` with key-value pairs inside describing all the settings. Then I pass it into `this.classes` as a pair: the class to use, and the data to give it. The game engine loops through that list and instantiates every single one.
+**OOP Highlight — The this.classes pattern** — Every single level I built uses the same core OOP pattern. I define game objects as object literals and pass them into `this.classes`. The engine then loops through and instantiates every one. This is data-driven design — instead of hardcoding objects, I describe them as data and let the engine do the work.
 
 ```javascript
-// From GameLevelTimmyfuncounter.js
+// This is the pattern I used in EVERY level I made.
+// Each entry is: { class: WhatToBuild, data: HowToBuildIt }
+// The engine reads this list and calls new WhatToBuild(data, gameEnv) for each one.
+
 this.classes = [
-    // each { class, data } pair = one instantiation
-    { class: GameEnvBackground, data: bgData },   // engine creates a background object
-    { class: Player, data: playerData },           // engine creates Kirby with my settings
-    { class: Npc, data: npcData1 },                // engine creates Garret the NPC
-    ...wallClasses                                 // engine creates all 6 invisible walls
-    // the ... spread operator unpacks the wallClasses array into individual entries
+    { class: GameEnvBackground, data: bgData },      // background image
+    { class: Player, data: playerData },              // Kirby — WASD controlled
+    { class: Npc, data: npcData1 },                   // Garret the NPC
+    ...wallClasses                                    // all 6 invisible maze walls
+    // ^ the spread operator (...) unpacks an array into individual list entries
+];
+
+// The multiplayer level has more objects but the exact same pattern:
+this.classes = [
+    { class: Player,                 data: playerData },
+    { class: NetworkSynchronizer,    data: { socket } },          // sends position to server
+    { class: TagCollisionDetector,   data: { socket, remotePlayers, tagState, myIdRef } },
+    { class: RemotePlayerVisualizer, data: { remotePlayers, tagState, myIdRef } },
+    { class: TagHUD,                 data: { tagState, myIdRef } }
 ];
 ```
 
+</div>
+
+<div class="evidence-block" markdown="1">
+
+**Collision Highlight — Tag detection using the distance formula** — This is probably the coolest piece of math in my whole project. To check if two players are touching in the multiplayer game, I use the actual Pythagorean theorem — the same formula from geometry class. I get the center point of both sprites, find the difference in x and y, then calculate the straight-line distance between them.
+
 ```javascript
-// From GameLevelMultiplayer.js — same exact pattern, just more objects
-this.classes = [
-    { class: GameEnvBackground,      data: bgData },
-    { class: SplineBarrier,          data: arenaBarrierData },   // the curved arena wall
-    { class: Player,                 data: playerData },          // my Kirby
-    { class: NetworkSynchronizer,    data: { socket } },          // sends my position to server every 50ms
-    { class: TagCollisionDetector,   data: { socket, remotePlayers, tagState, myIdRef } }, // tag detection
-    { class: RemotePlayerVisualizer, data: { remotePlayers, tagState, myIdRef } }, // draws other players
-    { class: TagHUD,                 data: { tagState, myIdRef } } // draws the "YOU ARE IT" banner
-];
+// Step 1: get the center of each sprite
+// (x/y is the top-left corner, so we add half the width/height to find the middle)
+const local  = this._getCenter(px, py, pw, ph);      // my center point
+const remote = this._getCenter(rp.x, rp.y, sw, sh);  // their center point
+
+// Step 2: find the gap between the two centers
+const dx = local.cx - remote.cx; // horizontal distance
+const dy = local.cy - remote.cy; // vertical distance
+
+// Step 3: Pythagorean theorem — a² + b² = c²
+// dx² + dy² = dist²  →  dist = √(dx² + dy²)
+const dist = Math.sqrt(dx * dx + dy * dy);
+
+// Step 4: if the distance is small enough, that means they're overlapping — tag!
+if (dist < this.hitRadius * 2) {
+    this.socket.emit("tag", { taggedId: sid }); // send tag event to server
+}
 ```
+
+</div>
+
+<div class="evidence-block" markdown="1">
+
+**API Highlight — Saving scores to localStorage** — For the maze level leaderboard I used the browser's built-in localStorage API to save and load scores. It's not a network API but it's still API integration — I'm calling `localStorage.getItem()` and `localStorage.setItem()` to persist data between sessions. I also use `JSON.parse()` and `JSON.stringify()` to convert between strings and objects since localStorage only stores text.
+
+```javascript
+saveToLeaderboard(steps) {
+    // localStorage.getItem returns a string (or null if nothing saved yet)
+    // JSON.parse converts that string back into a JavaScript array
+    let scores = JSON.parse(localStorage.getItem("mazeScores")) || [];
+
+    // add this run's score with a timestamp
+    scores.push({ steps: steps, date: new Date().toLocaleTimeString() });
+
+    // sort ascending — fewer steps = better score
+    scores.sort((a, b) => a.steps - b.steps);
+
+    // trim to top 5 only
+    scores = scores.slice(0, 5);
+
+    // JSON.stringify converts the array back to a string so localStorage can store it
+    localStorage.setItem("mazeScores", JSON.stringify(scores));
+
+    // then update the display
+    this.updateLeaderboardDisplay();
+}
+```
+
+</div>
+
 </div>
 
 ---
@@ -330,8 +415,6 @@ this.classes = [
 <div class="oop-section" markdown="1">
 
 ## 🎮 See It All In Action — Timmy's Fun Counter
-
-This one level demonstrates every single OOP concept on this page at the same time. Here's what to look for when you play it:
 
 <iframe 
     src="https://sprintingsnails.opencodingsociety.com/gamify/timmycounter.html" 
