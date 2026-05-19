@@ -424,4 +424,12 @@ saveToLeaderboard(steps) {
     allowfullscreen>
 </iframe>
 
+<iframe 
+    src="https://sprintingsnails.opencodingsociety.com/gamify/multiplayer" 
+    width="100%" 
+    height="500px" 
+    style="border: none; border-radius: 12px; margin-top: 16px;"
+    allowfullscreen>
+</iframe>
+
 </div>
