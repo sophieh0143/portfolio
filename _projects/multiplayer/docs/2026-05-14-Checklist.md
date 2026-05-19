@@ -200,13 +200,13 @@ author: Sophie Haas
 > **The guide to understanding the workspace.** Click a button to view code documentation standards, lesson summaries, and architectural highlights.
 
 <div class="cloud-grid">
-    <a href="{{site.baseurl}}/Documentation-checklist#code-comments" class="cloud-btn">
+    <a href="{{site.baseurl}}/Doc-checklist#code-comments" class="cloud-btn">
         <span>Code Comments</span>
     </a>
-    <a href="{{site.baseurl}}/Documentation-checklist#mini-lesson" class="cloud-btn">
+    <a href="{{site.baseurl}}/Doc-checklist#mini-lesson" class="cloud-btn">
         <span>Mini-Lesson Docs</span>
     </a>
-    <a href="{{site.baseurl}}/Documentation-checklist#code-highlights" class="cloud-btn">
+    <a href="{{site.baseurl}}/Doc-checklist#code-highlights" class="cloud-btn">
         <span>Code Highlights</span>
     </a>
 </div>
