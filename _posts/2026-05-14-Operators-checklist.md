@@ -5,6 +5,19 @@ permalink: /Operators-checklist
 hide: true
 show_reading_time: false
 ---
+<div>
+    <div class="grid-container">
+    <a href="https://pages.opencodingsociety.com/navigation/courses/csse" class="race-button">
+        <div class="btn-red">Open Coding Society Homepage</div>
+    </a>
+</div>
+
+<div>
+    <div class="grid-container">
+    <a href="/portfolio/portfolio-checklist" class="race-button">
+        <div class="btn-red">Home</div>
+    </a>
+</div>
 
 <style>
 .oop-section, .cs-section {
