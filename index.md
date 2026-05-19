@@ -3,7 +3,7 @@ layout: post
 title: Portfolio Home 
 hide: true
 show_reading_time: false
-permalink: /homes
+permalink: /portfolio/
 ---
 
 Hi! We're Sophie and Salma!
@@ -24,6 +24,10 @@ Hi! We're Sophie and Salma!
     <a href="https://vscode.dev/" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid #007ACC; border-radius: 6px; font-weight: 700;">
         <img src="https://vscode.dev/favicon.ico" alt="VSCode logo" style="width: 16px; height: 16px;">
         VSCode.dev
+    </a>
+    <a href="{{site.baseurl}}/portfolio-main" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid #FA8072; border-radius: 6px; font-weight: 700;">
+        <img src="{{ '/favicon.ico' | relative_url }}" alt="OCS logo" style="width: 16px; height: 16px;">
+        Portfolio 2027 Checklist
     </a>
 </div>
 
@@ -52,6 +56,11 @@ Hi! We're Sophie and Salma!
     <a href="{{site.baseurl}}/sprintfour" style="text-decoration: none;">
         <div style="background-color: #c5b71d; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
            Sprint 4 assessment
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/portfolio-main" style="text-decoration: none;">
+        <div style="background-color: #00FF00; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Portfolio 2027 Checklist
         </div>
     </a>
 </div>
