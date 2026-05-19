@@ -7,24 +7,20 @@ show_reading_time: false
 ---
 
 <style>
-.oop-section, .cs-section {
+.oop-section {
     background: rgba(255,255,255,0.05);
     border: 2px solid rgba(255,255,255,0.1);
     border-radius: 12px;
     padding: 20px 28px;
     margin: 28px 0;
 }
-.oop-section h2, .cs-section h2 {
+.oop-section h2 {
     color: #3498db;
     border-bottom: 2px solid #3498db;
     padding-bottom: 8px;
     margin-top: 0;
 }
-.cs-section h2 {
-    color: #2ecc71;
-    border-bottom: 2px solid #2ecc71;
-}
-.oop-section h3, .cs-section h3 {
+.oop-section h3 {
     color: #f0c040;
     margin-top: 20px;
 }
@@ -35,9 +31,6 @@ show_reading_time: false
     padding: 12px 16px;
     margin: 12px 0;
     font-size: 0.95em;
-}
-.cs-section .evidence-block {
-    border-left: 4px solid #2ecc71;
 }
 .gamerunner-note {
     background: rgba(52, 152, 219, 0.1);
@@ -54,11 +47,9 @@ pre {
     padding: 14px;
     overflow-x: auto;
     font-size: 0.88em;
-    color: #b82323 !important;
 }
 code {
     font-family: 'Courier New', monospace;
-    color: #e8e8e8 !important;
 }
 </style>
 
@@ -70,7 +61,7 @@ code {
 
 ## Writing Classes
 
-**What is a class?** A class is basically a blueprint for making objects. Instead of copy-pasting the same code a hundred times, you write it once in a class and then the game engine just uses that blueprint whenever it needs one. I like to think of it like a cookie cutter — you make the shape once and stamp out as many cookies as you want. In this game engine, literally everything you see on screen — the background, Kirby, the NPC, the walls — all came from a class.
+**What is a class?** A class is basically a blueprint. Instead of writing the same code over and over, you write it once inside a class and then the game engine can use that blueprint to create as many copies as it needs. Think of it like a cookie cutter — you make the shape once, then stamp out as many cookies as you want. In this game engine, every single thing you see on screen — the background, Kirby, the NPC, the walls — was created from a class.
 
 **Requirement:** Create minimum 2 custom character classes extending base classes (Player.js, NPC.js, Enemy.js)
 
@@ -80,7 +71,7 @@ code {
 
 <div class="evidence-block" markdown="1">
 
-**GameLevelTimmyfuncounter** — This is my invisible maze level. The whole thing is wrapped inside one class called `GameLevelTimmyfuncounter`. When the game engine loads this level, it runs the `constructor` first — that's basically the setup function that only runs once at the very beginning. Inside there I set up the background, where Kirby spawns, where the NPC Garret goes, and where all the invisible walls are. Then I hand everything to `this.classes`, which is the list the engine reads to actually put things on screen.
+**GameLevelTimmyfuncounter** — This is my invisible maze level. The whole level is wrapped inside one class called `GameLevelTimmyfuncounter`. When the game engine starts this level, it calls the `constructor` — which is basically the setup function that runs once at the beginning. Inside there I define what the background looks like, where Kirby spawns, where the NPC Garret goes, and where all the invisible walls are placed. At the end I hand all of that to `this.classes` which is the list the game engine reads to actually build everything on screen.
 
 ```javascript
 class GameLevelTimmyfuncounter {
@@ -107,7 +98,7 @@ export default GameLevelTimmyfuncounter; // makes this class available to other 
 
 <div class="evidence-block" markdown="1">
 
-**GameLevelBattle** — This is my boss fight level. Same idea as above — one class wraps the whole level. The difference is instead of an NPC, I bring in an `Enemy` class. I also built a whole damage system inside here — health bars for both Kirby and the enemy, a projectile Kirby can shoot with spacebar, and logic that checks if anything is hitting anything else.
+**GameLevelBattle** — This is my boss fight level. Same structure as above — one class wrapping the whole level. The difference is instead of an NPC, I pass in an `Enemy` class. I also built a whole damage system inside here — health bars for both Kirby and the enemy, a projectile that Kirby can shoot with the spacebar, and logic that checks if anything is hitting anything else.
 
 ```javascript
 class GameLevelBattle {
@@ -129,7 +120,7 @@ export default GameLevelBattle;
 
 <div class="evidence-block" markdown="1">
 
-**RemotePlayerVisualizer** — This is one of four custom classes I wrote from scratch for the multiplayer tag game. Its whole job is drawing the other players on screen. Every frame it loops through everyone connected, draws a Kirby sprite at their position, and if someone is "it" it slaps a red overlay on them plus a floating "IT" label above their head. It extends `GameObject` directly — meaning I'm not using a pre-built character template, I'm making my own thing on top of the engine's base class.
+**RemotePlayerVisualizer** — This is one of four custom classes I wrote from scratch for the multiplayer tag game. This one's job is just to draw the other players on screen. Every frame it loops through all the players currently connected, draws a Kirby sprite at their position, and if someone is "it" it puts a red overlay on them plus a floating "IT" label above their head. It extends `GameObject` directly — meaning I'm not using a pre-made character, I'm building my own thing on top of the engine's base class.
 
 ```javascript
 class RemotePlayerVisualizer extends GameObject {
@@ -160,7 +151,7 @@ class RemotePlayerVisualizer extends GameObject {
 
 <div class="evidence-block" markdown="1">
 
-**TagCollisionDetector** — Another custom class I wrote for the multiplayer game. This one runs quietly in the background every single frame. Its job is just to ask: am I close enough to tag someone? It uses the distance formula from math class — square root of dx squared plus dy squared — to check how far away every other player is. If I'm "it" and someone's within 30 pixels, it fires a "tag" message to the server.
+**TagCollisionDetector** — Another custom class for the multiplayer game. This one runs silently in the background every frame. Its whole job is to check: am I close enough to another player to tag them? It calculates the distance between me and every other player using the distance formula (the same one from math class — square root of dx squared plus dy squared). If I'm "it" and someone is within 30 pixels, it fires off a "tag" message to the server.
 
 ```javascript
 class TagCollisionDetector extends GameObject {
@@ -194,7 +185,7 @@ class TagCollisionDetector extends GameObject {
 
 ## Methods & Parameters
 
-**What are methods and parameters?** A method is just a function that lives inside a class — it's what the class knows how to *do*. Parameters are the inputs you pass into that method so it can actually do its job. Like if you had a `makeSandwich(bread, filling)` method, `bread` and `filling` are the parameters. In game code, methods handle stuff like checking if two things are touching, updating the score, or moving sprites around the screen.
+**What are methods and parameters?** A method is just a function that lives inside a class — it's something the class knows how to do. Parameters are the inputs you hand to that method so it can do its job. For example, if you had a `makeSandwich(bread, filling)` method, `bread` and `filling` are the parameters. In game code, methods handle stuff like checking collisions, updating scores, and moving sprites around.
 
 **Requirement:** Implement methods with parameters and return values (e.g., `collisionHandler(other, direction)`)
 
@@ -204,7 +195,7 @@ class TagCollisionDetector extends GameObject {
 
 <div class="evidence-block" markdown="1">
 
-**`isColliding(player, popcorn)`** — This method lives inside `GameLevelHooray`. It takes two parameters — `player` (Kirby) and `popcorn` (the collectible). It uses `getBoundingClientRect()` to get the exact pixel box of each one on screen, then checks if those boxes overlap. If they do, it returns `true`. If not, `false`. That answer is what the collision loop uses to decide whether to collect the popcorn.
+**`isColliding(player, popcorn)`** — This method lives inside `GameLevelHooray`. It takes two parameters — `player` (Kirby) and `popcorn` (the collectible). It grabs the on-screen rectangle of each one using `getBoundingClientRect()`, which gives you the exact pixel coordinates of where something is on screen. Then it checks if those rectangles overlap. If they do, it returns `true` (they're touching). If they don't, it returns `false`. That true/false answer is what the collision loop uses to decide whether to collect the popcorn.
 
 ```javascript
 isColliding(player, popcorn) {
@@ -227,7 +218,7 @@ isColliding(player, popcorn) {
 
 <div class="evidence-block" markdown="1">
 
-**`collectPopcorn(popcorn)`** — This runs every time `isColliding` comes back true. It takes the `popcorn` object as a parameter so it can move it. It bumps the counter up, updates the number shown on screen, then picks a completely random new spot and teleports the popcorn there. Once you've grabbed all 10, it just hides the popcorn instead of respawning it.
+**`collectPopcorn(popcorn)`** — This method runs every time `isColliding` returns true. It takes the `popcorn` object as a parameter so it can move it. It bumps the counter up, updates the number on screen, then picks a random new spot anywhere on the page and teleports the popcorn there. Once you've collected all 10, it just hides the popcorn entirely instead of respawning it.
 
 ```javascript
 collectPopcorn(popcorn) {
@@ -253,7 +244,7 @@ collectPopcorn(popcorn) {
 
 <div class="evidence-block" markdown="1">
 
-**`_getCenter(x, y, w, h)`** — This is inside `TagCollisionDetector`. It takes four parameters — x position, y position, width, and height — and returns the center point of that box. I need this because a sprite's x/y is its top-left corner, not the middle, so I have to calculate the center before measuring distance between two players.
+**`_getCenter(x, y, w, h)`** — This is inside `TagCollisionDetector` in my multiplayer game. It takes four parameters — an x position, y position, width, and height — and returns the center point of that box. I use it to get the exact center of both Kirby and a remote player before calculating the distance between them. Getting the center is important because the sprite's x/y is the top-left corner, not the middle.
 
 ```javascript
 _getCenter(x, y, w, h) {
@@ -274,7 +265,7 @@ const dist = Math.sqrt(dx * dx + dy * dy); // actual distance (Pythagorean theor
 
 <div class="evidence-block" markdown="1">
 
-**`saveToLeaderboard(steps)`** — This is in `GameLevelTimmyfuncounter`. When you finish the maze it gets called with however many steps you took. It pulls the existing scores out of `localStorage` (basically the browser's built-in save file), adds your new score, sorts everyone from fewest to most steps, keeps only the top 5, then saves it all back.
+**`saveToLeaderboard(steps)`** — This method is in `GameLevelTimmyfuncounter`. When you win the maze it gets called with however many steps you took. It pulls the existing leaderboard out of `localStorage` (which is basically the browser's built-in save file), adds your new score, sorts everyone from fewest steps to most (because fewer steps = better), trims it down to only 5 entries, then saves it all back.
 
 ```javascript
 saveToLeaderboard(steps) {
@@ -298,6 +289,7 @@ saveToLeaderboard(steps) {
 
 </div>
 
+
 </div>
 
 ---
@@ -306,7 +298,7 @@ saveToLeaderboard(steps) {
 
 ## Instantiation & Objects
 
-**What is instantiation?** Instantiation is when you take a class blueprint and actually create a real working object from it. Like, `Player` is just a description — instantiation is the moment the engine goes "okay, make me one of those" and the actual Kirby appears on screen. In this engine, instantiation happens through `this.classes` — every item in that list gets turned into a real object when the level loads.
+**What is instantiation?** Instantiation is when you take a class (the blueprint) and actually create a real object from it. Like, the class `Player` is just a description of what a player is — instantiation is the moment the game engine goes "okay, make me one of those" and creates the actual Kirby you see on screen. In this engine, instantiation happens through `this.classes` — every item in that list gets instantiated when the level loads.
 
 **Requirement:** Instantiate game objects in GameLevel configuration using Object Literals
 
@@ -316,7 +308,7 @@ saveToLeaderboard(steps) {
 
 <div class="evidence-block" markdown="1">
 
-Every level I made uses the same pattern. I write each game object as a JavaScript **object literal** — curly braces `{}` with key-value pairs describing all its settings. Then I pass it into `this.classes` as a pair: the class to use, and the data to give it. The engine loops through that list and creates every single one.
+Every level I made uses the same pattern. I write each game object as a JavaScript **object literal** — which is just a set of curly braces `{}` with key-value pairs inside describing all the settings. Then I pass it into `this.classes` as a pair: the class to use, and the data to give it. The game engine loops through that list and instantiates every single one.
 
 ```javascript
 // From GameLevelTimmyfuncounter.js
@@ -345,6 +337,7 @@ this.classes = [
 
 </div>
 
+
 </div>
 
 ---
@@ -353,7 +346,7 @@ this.classes = [
 
 ## Inheritance (Basic)
 
-**What is inheritance?** Inheritance is when one class automatically gets all the features of another class just by using the `extends` keyword. It's like how a golden retriever is still a dog — it has all the normal dog stuff plus its own golden retriever things on top. In this engine, `Player` extends `Character`, which extends `GameObject`. So `Player` gets everything both of those have, and then adds its own keyboard controls on top. I actually wrote four new classes that extend `GameObject` myself for the multiplayer level.
+**What is inheritance?** Inheritance is when one class gets all the features of another class automatically, just by saying `extends`. It's like how a golden retriever is still a dog — it has all the dog stuff (four legs, barks, etc.) but also its own specific golden retriever stuff on top. In this engine, `Player` extends `Character`, which extends `GameObject`. So `Player` automatically gets everything `Character` and `GameObject` can do, and then adds its own player-specific stuff on top.
 
 **Requirement:** Create class hierarchy with 2+ levels (e.g., `GameObject → Character → Player`)
 
@@ -363,7 +356,7 @@ this.classes = [
 
 <div class="evidence-block" markdown="1">
 
-The game engine already has a whole family of classes that build on each other. In my multiplayer level I added four new branches to that family tree myself.
+The GameEngine has a whole family of classes that build on top of each other. In my multiplayer level I actually wrote four new classes that extend `GameObject` myself — so I'm not just using the existing chain, I'm adding new branches to it.
 
 ```
 GameObject  ← the base class everything inherits from
@@ -393,6 +386,7 @@ import Enemy from './essentials/Enemy.js';   // Enemy extends Character extends 
 
 </div>
 
+
 </div>
 
 ---
@@ -401,7 +395,7 @@ import Enemy from './essentials/Enemy.js';   // Enemy extends Character extends 
 
 ## Method Overriding
 
-**What is method overriding?** When a class inherits from a parent, it gets all the parent's methods automatically. But sometimes you need that method to do something different in your specific class. So you write your own version with the same name — that replaces the parent's version. It's like if the base `Character` class had a generic `update()` that just moves the character, but you override it in `Enemy` to also make it chase the player around.
+**What is method overriding?** When a class inherits from a parent, it gets the parent's methods automatically. But sometimes you want that method to do something different or extra in your specific class. So you write your own version of it with the same name — that's overriding. The new version replaces the parent's version. It's like if the base `Character` class had a generic `update()` that just moves the character, but you override it in `Enemy` to also make it chase the player.
 
 **Requirement:** Override parent methods (`update()`, `draw()`, `handleCollision()`)
 
@@ -411,7 +405,7 @@ import Enemy from './essentials/Enemy.js';   // Enemy extends Character extends 
 
 <div class="evidence-block" markdown="1">
 
-In my battle level, I grabbed the enemy's built-in `update()` and replaced it with my own version at runtime. I still call the original first so the enemy keeps chasing Kirby normally, but then I add my own stuff on top — checking if they're overlapping, dealing damage with a cooldown so you don't lose all your HP in one second, and triggering game over if health hits zero.
+In my battle level, I grabbed the enemy's built-in `update()` method and replaced it with my own version at runtime. I still call the original first so the enemy keeps moving normally, but then I bolt on my own logic — checking if Kirby is overlapping with the enemy, applying damage with a cooldown so you don't lose all your health instantly, and checking if any of Kirby's projectiles have hit the enemy.
 
 ```javascript
 // save the original update so we can still call it
@@ -446,7 +440,7 @@ enemy.update = function () {
 
 <div class="evidence-block" markdown="1">
 
-In my multiplayer level, every custom class I wrote overrides both `update()` and `draw()` from `GameObject`. `TagHUD` is a good example — it overrides `draw()` to paint a pulsing red border around the whole screen when you're "it", plus a "YOU ARE IT" banner at the top. The `Math.sin()` is what makes it pulse in and out smoothly.
+In my multiplayer level, every custom class I wrote overrides both `update()` and `draw()` from `GameObject`. `TagHUD` is a good example — it overrides `draw()` to paint a pulsing red border around the whole screen when you're "it", plus a "YOU ARE IT" banner. The `Math.sin()` makes it pulse in and out smoothly over time.
 
 ```javascript
 class TagHUD extends GameObject {
@@ -482,6 +476,7 @@ class TagHUD extends GameObject {
 
 </div>
 
+
 </div>
 
 ---
@@ -490,7 +485,7 @@ class TagHUD extends GameObject {
 
 ## Constructor Chaining
 
-**What is constructor chaining?** Every class has a `constructor` — the setup function that runs when an object gets created. When you use `extends`, your class has a parent with its own constructor too. `super()` is how you call the parent's constructor before doing your own setup. You literally have to call `super()` first or JavaScript throws an error — you can't use `this` until the parent has set up its stuff. I think of it like making sure the foundation of a house is solid before you start putting up walls.
+**What is constructor chaining?** Every class has a `constructor` — the setup function that runs when an object is created. When you use `extends`, your class has a parent with its own constructor too. `super()` is how you call the parent's constructor first before doing your own setup. You HAVE to call `super()` before you can use `this` in a child class — if you skip it, JavaScript throws an error. It's like making sure the foundation of a house is built before you put walls up.
 
 **Requirement:** Use `super()` to chain constructors
 
@@ -500,7 +495,7 @@ class TagHUD extends GameObject {
 
 <div class="evidence-block" markdown="1">
 
-Every custom class I wrote for the multiplayer level calls `super(gameEnv)` as the very first line. This runs `GameObject`'s constructor first, which sets up `this.gameEnv` and registers the object with the engine. Only then can I safely start setting my own properties.
+Every custom class I wrote in the multiplayer level calls `super(gameEnv)` as the very first line of the constructor. This runs `GameObject`'s constructor first, which sets up things like `this.gameEnv` and registers the object with the game engine. Only after that can I safely start setting up my own properties.
 
 ```javascript
 class RemotePlayerVisualizer extends GameObject {
@@ -526,7 +521,7 @@ class TagCollisionDetector extends GameObject {
 }
 ```
 
-For the regular game levels, the engine handles the chaining automatically. When it reads `{ class: Player, data: playerData }` from `this.classes`, it calls `new Player(playerData, gameEnv)` which triggers the whole chain:
+For the regular game levels, the engine does the chaining automatically. When it reads `{ class: Player, data: playerData }` from `this.classes`, it calls `new Player(playerData, gameEnv)` which triggers the whole chain:
 
 ```javascript
 // What happens behind the scenes when the engine builds Kirby:
@@ -550,6 +545,9 @@ this.classes = [
 
 </div>
 
+
+</div>
+
 </div>
 
 ---
@@ -558,19 +556,19 @@ this.classes = [
 
 ## 🎮 See It All In Action — Timmy's Fun Counter
 
-This one level shows every single OOP concept on this page at the same time. Here's what to look for when you play it:
+This one level demonstrates every single OOP concept on this page at the same time. Here's what to look for when you play it:
 
-**Writing Classes** — The whole level you're playing right now is wrapped inside `GameLevelTimmyfuncounter`, a class I wrote myself. Everything on screen came from that class's constructor.
+**Writing Classes** — The entire level you're playing is wrapped inside `GameLevelTimmyfuncounter`, a class I wrote from scratch. Every object on screen came from that class's constructor.
 
-**Methods & Parameters** — The step counter at the bottom is powered by a keydown method that takes the key event as a parameter and updates the count. The leaderboard button calls `saveToLeaderboard(steps)` with your step count when you win.
+**Methods & Parameters** — The step counter in the bottom center is powered by a keydown method that takes the key event as a parameter and updates the count. The leaderboard button calls `saveToLeaderboard(steps)` with your step count when you win.
 
-**Instantiation & Objects** — Every single thing you see — the background, Kirby, Garret the NPC, all the invisible walls — was instantiated from the `this.classes` list when the level loaded.
+**Instantiation & Objects** — Every single thing you see — the background, Kirby, Garret the NPC, and all the invisible walls — was instantiated from the `this.classes` list. When the level loaded, the engine looped through that list and created each one.
 
-**Inheritance** — Kirby is a `Player`, which extends `Character`, which extends `GameObject`. Garret is an `Npc`, which also extends `Character`. They look and act totally different but they're built from the same base chain.
+**Inheritance** — Kirby is a `Player`, which extends `Character`, which extends `GameObject`. Garret is an `Npc`, which also extends `Character`. They look and act completely different, but they're both built from the same base chain.
 
-**Method Overriding** — Garret's `interact()` method is a custom override. Instead of the default NPC behavior, when you walk into him he teleports across the screen and changes his dialogue. That's a parent method replaced with my own logic.
+**Method Overriding** — Garret's `interact()` method is a custom override. Instead of the default NPC behavior, when you walk into him he teleports to the other side of the screen and changes his dialogue. That's a parent method replaced with custom logic.
 
-**Constructor Chaining** — The moment this level loaded and Kirby appeared on screen, `Player → Character → GameObject` all ran their constructors in order through `super()` calls, passing `playerData` up the chain the whole way.
+**Constructor Chaining** — The moment this level loaded and Kirby appeared on screen, `Player → Character → GameObject` all ran their constructors in order via `super()` calls, passing `playerData` up the chain the whole way.
 
 <iframe 
     src="https://sprintingsnails.opencodingsociety.com/gamify/timmycounter.html" 
