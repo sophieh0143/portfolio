@@ -7,20 +7,24 @@ show_reading_time: false
 ---
 
 <style>
-.oop-section {
+.oop-section, .cs-section {
     background: rgba(255,255,255,0.05);
     border: 2px solid rgba(255,255,255,0.1);
     border-radius: 12px;
     padding: 20px 28px;
     margin: 28px 0;
 }
-.oop-section h2 {
+.oop-section h2, .cs-section h2 {
     color: #3498db;
     border-bottom: 2px solid #3498db;
     padding-bottom: 8px;
     margin-top: 0;
 }
-.oop-section h3 {
+.cs-section h2 {
+    color: #2ecc71;
+    border-bottom: 2px solid #2ecc71;
+}
+.oop-section h3, .cs-section h3 {
     color: #f0c040;
     margin-top: 20px;
 }
@@ -31,6 +35,9 @@ show_reading_time: false
     padding: 12px 16px;
     margin: 12px 0;
     font-size: 0.95em;
+}
+.cs-section .evidence-block {
+    border-left: 4px solid #2ecc71;
 }
 .gamerunner-note {
     background: rgba(52, 152, 219, 0.1);
@@ -47,9 +54,11 @@ pre {
     padding: 14px;
     overflow-x: auto;
     font-size: 0.88em;
+    color: #e8e8e8;
 }
 code {
     font-family: 'Courier New', monospace;
+    color: #e8e8e8;
 }
 </style>
 
