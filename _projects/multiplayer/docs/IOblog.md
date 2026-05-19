@@ -1,7 +1,7 @@
 ---
 layout: post 
 title: Input/Output Checklist
-permalink: /IO-checklist
+permalink: /old-IO-checklist
 hide: true
 show_reading_time: false
 ---

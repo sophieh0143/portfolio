@@ -1,7 +1,7 @@
 ---
 layout: post 
 title: Control Structures Checklist
-permalink: /ControlStructures-checklist
+permalink: /old-ControlStructures-checklist
 hide: true
 show_reading_time: false
 ---

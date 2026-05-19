@@ -1,7 +1,7 @@
 ---
 layout: post 
 title: Data Types Checklist
-permalink: /DataTypes-checklist
+permalink: /old-DataTypes-checklist
 hide: true
 show_reading_time: false
 ---

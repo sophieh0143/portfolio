@@ -1,7 +1,7 @@
 ---
 layout: post 
 title: Documentation Checklist
-permalink: /Doc-checklist
+permalink: /old-Doc-checklist
 hide: true
 show_reading_time: false
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post 
 title: Operators Checklist
-permalink: /Operators-checklist
+permalink: /old-Operators-checklist
 hide: true
 show_reading_time: false
 ---

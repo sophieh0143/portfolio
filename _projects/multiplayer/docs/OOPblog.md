@@ -1,7 +1,7 @@
 ---
 layout: post 
 title: Object Oriented Programming Checklist
-permalink: /OOP-checklist
+permalink: /old-OOP-checklist
 hide: true
 show_reading_time: false
 ---
