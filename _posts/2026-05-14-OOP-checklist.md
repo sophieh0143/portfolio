@@ -54,7 +54,7 @@ pre {
     padding: 14px;
     overflow-x: auto;
     font-size: 0.88em;
-    color: #e8e8e8 !important;
+    color: #b82323 !important;
 }
 code {
     font-family: 'Courier New', monospace;
