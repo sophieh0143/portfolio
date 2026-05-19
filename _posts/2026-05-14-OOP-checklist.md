@@ -7,20 +7,20 @@ show_reading_time: false
 ---
 
 <style>
-.oop-section {
+.oop-section, .cs-section {
     background: rgba(255,255,255,0.05);
     border: 2px solid rgba(255,255,255,0.1);
     border-radius: 12px;
     padding: 20px 28px;
     margin: 28px 0;
 }
-.oop-section h2 {
+.oop-section h2, .cs-section h2 {
     color: #3498db;
     border-bottom: 2px solid #3498db;
     padding-bottom: 8px;
     margin-top: 0;
 }
-.oop-section h3 {
+.oop-section h3, .cs-section h3 {
     color: #f0c040;
     margin-top: 20px;
 }
@@ -47,10 +47,49 @@ pre {
     padding: 14px;
     overflow-x: auto;
     font-size: 0.88em;
+    color: #e8e8e8 !important;
 }
 code {
     font-family: 'Courier New', monospace;
+    color: #e8e8e8 !important;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Bungee&display=swap');
+
+.grid-container {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.race-button {
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.race-button div {
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-family: 'Bungee', cursive;
+    border: 2px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    text-align: center;
+    color: white;
+}
+
+.race-button:hover {
+    transform: translateY(-5px) skew(-5deg);
+}
+
+.btn-red { background: linear-gradient(45deg, #c51d1d, #ff3131); box-shadow: 0 4px 15px rgba(197, 29, 29, 0.4); }
 </style>
 
 # 🏗️ Object-Oriented Programming Checklist
