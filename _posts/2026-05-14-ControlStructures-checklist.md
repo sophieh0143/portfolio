@@ -7,39 +7,39 @@ show_reading_time: false
 ---
 
 <style>
-.cs-section {
+.oop-section, .cs-section {
     background: rgba(255,255,255,0.05);
     border: 2px solid rgba(255,255,255,0.1);
     border-radius: 12px;
     padding: 20px 28px;
     margin: 28px 0;
 }
-.cs-section h2 {
-    color: #2ecc71;
-    border-bottom: 2px solid #2ecc71;
+.oop-section h2, .cs-section h2 {
+    color: #3498db;
+    border-bottom: 2px solid #3498db;
     padding-bottom: 8px;
     margin-top: 0;
 }
-.cs-section h3 {
+.oop-section h3, .cs-section h3 {
     color: #f0c040;
     margin-top: 20px;
 }
 .evidence-block {
     background: rgba(0,0,0,0.3);
-    border-left: 4px solid #2ecc71;
+    border-left: 4px solid #3498db;
     border-radius: 0 8px 8px 0;
     padding: 12px 16px;
     margin: 12px 0;
     font-size: 0.95em;
 }
 .gamerunner-note {
-    background: rgba(46, 204, 113, 0.1);
-    border: 2px dashed #2ecc71;
+    background: rgba(52, 152, 219, 0.1);
+    border: 2px dashed #3498db;
     border-radius: 8px;
     padding: 12px 16px;
     margin: 16px 0;
     font-size: 0.95em;
-    color: #a0f5c0;
+    color: #a0d4f5;
 }
 pre {
     background: #1a1a2e;
@@ -47,9 +47,11 @@ pre {
     padding: 14px;
     overflow-x: auto;
     font-size: 0.88em;
+    color: #e8e8e8 !important;
 }
 code {
     font-family: 'Courier New', monospace;
+    color: #e8e8e8 !important;
 }
 </style>
 
@@ -335,6 +337,14 @@ draw() {
 
 <iframe 
     src="https://sprintingsnails.opencodingsociety.com/gamify/timmycounter.html" 
+    width="100%" 
+    height="500px" 
+    style="border: none; border-radius: 12px; margin-top: 16px;"
+    allowfullscreen>
+</iframe>
+
+<iframe 
+    src="https://sprintingsnails.opencodingsociety.com/gamify/multiplayer" 
     width="100%" 
     height="500px" 
     style="border: none; border-radius: 12px; margin-top: 16px;"

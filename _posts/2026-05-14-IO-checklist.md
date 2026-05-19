@@ -7,20 +7,20 @@ show_reading_time: false
 ---
 
 <style>
-.oop-section {
+.oop-section, .cs-section {
     background: rgba(255,255,255,0.05);
     border: 2px solid rgba(255,255,255,0.1);
     border-radius: 12px;
     padding: 20px 28px;
     margin: 28px 0;
 }
-.oop-section h2 {
+.oop-section h2, .cs-section h2 {
     color: #3498db;
     border-bottom: 2px solid #3498db;
     padding-bottom: 8px;
     margin-top: 0;
 }
-.oop-section h3 {
+.oop-section h3, .cs-section h3 {
     color: #f0c040;
     margin-top: 20px;
 }
@@ -47,9 +47,11 @@ pre {
     padding: 14px;
     overflow-x: auto;
     font-size: 0.88em;
+    color: #e8e8e8 !important;
 }
 code {
     font-family: 'Courier New', monospace;
+    color: #e8e8e8 !important;
 }
 </style>
 
@@ -263,7 +265,13 @@ async function loadLeaderboardData() {
 </iframe>
 
 ## Multiplayer
-</div>
+<iframe 
+    src="https://sprintingsnails.opencodingsociety.com/gamify/multiplayer" 
+    width="100%" 
+    height="500px" 
+    style="border: none; border-radius: 12px; margin-top: 16px;"
+    allowfullscreen>
+</iframe>
 
 
 
