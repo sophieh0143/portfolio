@@ -3,6 +3,8 @@ layout: post
 codemirror: true
 title: Checklist
 permalink: /portfolio-checklist
+hide: true
+show_reading_time: false
 author: Sophie Haas
 ---
 
