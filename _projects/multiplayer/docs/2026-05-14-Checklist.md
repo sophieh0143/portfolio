@@ -96,6 +96,7 @@ author: Sophie Haas
     <a href="/portfolio/OOP-checklist#writing-classes" class="cloud-btn">
         <span>Writing Classes</span>
     </a>
+    <a href="{{ site.baseurl }}/OOP-checklist/">OOP</a>
     <a href="/portfolio/OOP-checklist#methods-params" class="cloud-btn">
         <span>Methods & Parameters</span>
     </a>
@@ -254,4 +255,5 @@ author: Sophie Haas
     <a href="/portfolio/Testing-checklist#api-error-handling" class="cloud-btn">
         <span>API Error Handling</span>
     </a>
+    
 </div>
