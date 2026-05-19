@@ -38,31 +38,25 @@ Hi! We're Sophie and Salma!
 > Here is my progress through coding, click to see these online
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <a href="{{site.baseurl}}/snake" style="text-decoration: none;">
-        <div style="background-color: #00FF00; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-            Snake
-        </div>
-    </a>
-    <a href="{{site.baseurl}}/gamify/parallax" style="text-decoration: none;">
-        <div style="background-color: #3c1de8; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-           Fish
-        </div>
-    </a>
-    <a href="{{site.baseurl}}/gamify/water" style="text-decoration: none;">
-        <div style="background-color: #b71dc5; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-           Squid
-        </div>
-    </a>
-    <a href="{{site.baseurl}}/sprintfour" style="text-decoration: none;">
-        <div style="background-color: #c5b71d; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-           Sprint 4 assessment
-        </div>
-    </a>
-    <a href="{{site.baseurl}}/portfolio-main" style="text-decoration: none;">
-        <div style="background-color: #00FF00; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-            Portfolio 2027 Checklist
-        </div>
-    </a>
+    <a href="/portfolio/portfolio-main" style="text-decoration: none; display: inline-flex; ...">
+    Portfolio 2027 Checklist
+</a>
+
+<a href="/portfolio/snake" style="text-decoration: none;">
+    ...Snake...
+</a>
+
+<a href="/portfolio/gamify/parallax" style="text-decoration: none;">
+    ...Fish...
+</a>
+
+<a href="/portfolio/gamify/water" style="text-decoration: none;">
+    ...Squid...
+</a>
+
+<a href="/portfolio/sprintfour" style="text-decoration: none;">
+    ...Sprint 4 assessment...
+</a>
 </div>
 
 <br>
