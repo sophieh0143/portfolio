@@ -17,7 +17,7 @@ Hi! We're Sophie and Salma!
         <img src="{{ '/favicon.ico' | relative_url }}" alt="OCS logo" style="width: 16px; height: 16px;">
         OCS
     </a>
-    <a href="https://github.com/Open-Coding-Society/portfolio" style=" text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid #FFF; border-radius: 6px; font-weight: 700;">
+    <a href="https://github.com/Open-Coding-Society/portfolio" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid #FFF; border-radius: 6px; font-weight: 700;">
         <img src="https://github.githubassets.com/favicons/favicon.svg" alt="GitHub logo" style="width: 16px; height: 16px;">
         GitHub
     </a>
@@ -25,7 +25,7 @@ Hi! We're Sophie and Salma!
         <img src="https://vscode.dev/favicon.ico" alt="VSCode logo" style="width: 16px; height: 16px;">
         VSCode.dev
     </a>
-    <a href="{{site.baseurl}}/portfolio-main" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid #FA8072; border-radius: 6px; font-weight: 700;">
+    <a href="/portfolio/portfolio-main" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid #FA8072; border-radius: 6px; font-weight: 700;">
         <img src="{{ '/favicon.ico' | relative_url }}" alt="OCS logo" style="width: 16px; height: 16px;">
         Portfolio 2027 Checklist
     </a>
@@ -38,25 +38,31 @@ Hi! We're Sophie and Salma!
 > Here is my progress through coding, click to see these online
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <a href="/portfolio/portfolio-main" style="text-decoration: none; display: inline-flex; ...">
-    Portfolio 2027 Checklist
-</a>
-
-<a href="/portfolio/snake" style="text-decoration: none;">
-    ...Snake...
-</a>
-
-<a href="/portfolio/gamify/parallax" style="text-decoration: none;">
-    ...Fish...
-</a>
-
-<a href="/portfolio/gamify/water" style="text-decoration: none;">
-    ...Squid...
-</a>
-
-<a href="/portfolio/sprintfour" style="text-decoration: none;">
-    ...Sprint 4 assessment...
-</a>
+    <a href="/portfolio/snake" style="text-decoration: none;">
+        <div style="background-color: #00FF00; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Snake
+        </div>
+    </a>
+    <a href="/portfolio/gamify/parallax" style="text-decoration: none;">
+        <div style="background-color: #3c1de8; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+           Fish
+        </div>
+    </a>
+    <a href="/portfolio/gamify/water" style="text-decoration: none;">
+        <div style="background-color: #b71dc5; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+           Squid
+        </div>
+    </a>
+    <a href="/portfolio/sprintfour" style="text-decoration: none;">
+        <div style="background-color: #c5b71d; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+           Sprint 4 assessment
+        </div>
+    </a>
+    <a href="/portfolio/portfolio-main" style="text-decoration: none;">
+        <div style="background-color: #00FF00; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Portfolio 2027 Checklist
+        </div>
+    </a>
 </div>
 
 <br>
