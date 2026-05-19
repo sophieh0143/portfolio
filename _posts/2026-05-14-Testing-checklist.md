@@ -171,9 +171,7 @@ We used many documents to keep track of our work: blogs, troubleshooting guides,
 
 ## API Error Handling
 
-**What are code highlights?** Code highlights are when you pick the most important or interesting parts of your project and explain them clearly — not just "here's the code" but actually walking through what each piece does and why it matters. The rubric wants to see OOP hierarchy, API calls, and collision logic specifically called out and explained.
-
-h2 style="font-family: sans-serif; color: #3498db; border-left: 4px solid #3498db; padding-left: 12px; text-transform: none; letter-spacing: 0;">Ideation Documents / Repo Access</h2>
+<h2> style="font-family: sans-serif; color: #3498db; border-left: 4px solid #3498db; padding-left: 12px; text-transform: none; letter-spacing: 0;">Ideation Documents / Repo Access</h2>
 
 <div class="grid-container">
     <a href="https://github.com/Salma-Zag/Tri2team" class="race-button">
@@ -204,29 +202,4 @@ h2 style="font-family: sans-serif; color: #3498db; border-left: 4px solid #3498d
      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfo49g4uz0ujn8IB16fkf5t2Xgaj_j35Jvi1HmGzaoMg8Ft2Q/viewform?usp=publish-editor" class="race-button">
         <div class="btn-red">Gameplay Feedback Google Form!</div>
     </a>
-</div>
-
-
----
-
-<div class="oop-section" markdown="1">
-
-## 🎮 See It All In Action — Timmy's Fun Counter
-
-<iframe 
-    src="https://sprintingsnails.opencodingsociety.com/gamify/timmycounter.html" 
-    width="100%" 
-    height="500px" 
-    style="border: none; border-radius: 12px; margin-top: 16px;"
-    allowfullscreen>
-</iframe>
-
-<iframe 
-    src="https://sprintingsnails.opencodingsociety.com/gamify/multiplayer" 
-    width="100%" 
-    height="500px" 
-    style="border: none; border-radius: 12px; margin-top: 16px;"
-    allowfullscreen>
-</iframe>
-
 </div>
