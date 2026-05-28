@@ -19,7 +19,7 @@ description: "Class of 2029"
 owner_name: Sophie Haas
 github_username: sophieh0143
 github_repo: "portfolio" 
-baseurl: "/portfolio"
+baseurl: ""
 future: true
 
 # Build settings
