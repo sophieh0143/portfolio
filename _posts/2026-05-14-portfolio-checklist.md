@@ -10,6 +10,13 @@ author: Sophie Haas
 
 # Progress and Code Updates Checklist
 
+<div>
+    <div class="grid-container">
+    <a href="https://pages.opencodingsociety.com/navigation/courses/csse" class="race-button">
+        <div class="btn-red">Open Coding Society Homepage</div>
+    </a>
+</div>
+
 <style>
     /* Prevent the main container from clipping the puffy cloud tops */
     .cloud-grid {
